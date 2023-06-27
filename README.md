@@ -9,3 +9,11 @@ The important folders are:
 - models: This folder contains a few simple optimization models (e.g. least squares). Each model is an object and has functions such as F or grad_F (the function value and the gradient) that return data used by various optimization algorithms.
 -  opt_algos: Various optimization algorithms (line search, back tracking, gradient descent, accelerated GD, Newton etc) are implemented in python. Each optimization function takes a model object (see above) as an argument plus various optimization hyperparameters (e.g. step length, max iterations, etc).
 
+# References:
+- Why Momentum Really Works: https://distill.pub/2017/momentum/
+- Convex Optimization, Prof. L. Vandenberghe, (UCLA): http://www.seas.ucla.edu/~vandenbe/ee236b/ee236b.html
+- Optimization Methods for Large-Scale Systems, Prof. L. Vandenberghe, (UCLA): http://www.seas.ucla.edu/~vandenbe/ee236c.html
+- Convex Optimization, Prof. R. Tibshirani (CMU): http://www.stat.cmu.edu/~ryantibs/convexopt/
+- Lectures on Convex Optimization, Yurii Nesterov
+- An overview of gradient descent optimization algorithms: https://www.ruder.io/optimizing-gradient-descent/
+
