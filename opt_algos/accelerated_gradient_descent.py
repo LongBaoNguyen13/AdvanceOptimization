@@ -4,7 +4,7 @@ from time import time
 from .line_search import line_search_wolfe
 
 
-def acc_gd_fixed_step(model, alpha=None, max_iterartion=1e4, epsilon=1e-5,
+def acc_gd_fixed_step(model, alpha, max_iterartion=1e4, epsilon=1e-5,
                                  x_start=None):
     """
     Nesterov's accelerated gradient descent
@@ -76,7 +76,7 @@ def acc_gd_fixed_step(model, alpha=None, max_iterartion=1e4, epsilon=1e-5,
             'x_history': x_history}
 
 
-def acc_gd_line_search(model, alpha=None, max_iterartion=1e4, epsilon=1e-5,
+def acc_gd_line_search(model, alpha, max_iterartion=1e4, epsilon=1e-5,
                                  x_start=None):
     """
     Nesterov's accelerated gradient descent

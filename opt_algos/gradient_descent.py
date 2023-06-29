@@ -4,7 +4,7 @@ from time import time
 from opt_algos.line_search import line_search_wolfe
 
 
-def gradient_descent_fixed_step(model, alpha=None, max_iteration=1e4, epsilon=1e-5,
+def gradient_descent_fixed_step(model, alpha, max_iteration=1e4, epsilon=1e-5,
                      x_start=None):
     """
     Gradient descent
@@ -66,7 +66,7 @@ def gradient_descent_fixed_step(model, alpha=None, max_iteration=1e4, epsilon=1e
 
 
 
-def gradient_descent_line_search(model, alpha=None, max_iteration=1e4, epsilon=1e-5,
+def gradient_descent_line_search(model, alpha, max_iteration=1e4, epsilon=1e-5,
                      x_start=None):
     """
     Gradient descent
