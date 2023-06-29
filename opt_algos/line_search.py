@@ -106,7 +106,7 @@ def line_search_wolfe(model, xk, pk, gfk=None, old_fval=None,
         fc[0] += 1
         return f(xk + alpha * pk, *args)
 
-    fprime = myfprime
+    fprime = myfprime(xk)
 
     def derphi(alpha):
         gc[0] += 1

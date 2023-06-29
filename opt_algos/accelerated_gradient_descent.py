@@ -1,7 +1,7 @@
 import numpy as np
 from time import time
 
-from .line_search import line_search_wolfe
+from opt_algos.line_search import line_search_wolfe
 
 
 def acc_gd_fixed_step(model, alpha, max_iterartion=1e4, epsilon=1e-5,
@@ -107,6 +107,7 @@ def acc_gd_line_search(model, alpha, max_iterartion=1e4, epsilon=1e-5,
     else:
         x_current = np.random.normal(loc=0, scale=1, size=n)
 
+    pk = grad_F(x_current)
     y_current = x_current
     t_current = 1.0
 
@@ -114,7 +115,7 @@ def acc_gd_line_search(model, alpha, max_iterartion=1e4, epsilon=1e-5,
     x_history = []
 
     # intialization alpha
-    alpha = line_search_wolfe(model, x_current, pk=grad_F)
+    alpha = line_search_wolfe(model, x_current, pk=pk)
 
     start_time = time() 
     k = None
@@ -139,7 +140,8 @@ def acc_gd_line_search(model, alpha, max_iterartion=1e4, epsilon=1e-5,
         x_current = x_next
         y_current = y_next
         t_current = t_next
-        alpha = line_search_wolfe(model, x_current, pk=grad_F)
+        pk = grad_F(x_current)
+        alpha = line_search_wolfe(model, x_current, pk=pk)
     
     duration = time() - start_time
 

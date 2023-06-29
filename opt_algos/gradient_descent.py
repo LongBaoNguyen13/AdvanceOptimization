@@ -1,7 +1,7 @@
 import numpy as np
 from time import time
 
-from opt_algos.line_search import line_search_wolfe
+from .line_search import line_search_wolfe
 
 
 def gradient_descent_fixed_step(model, alpha, max_iteration=1e4, epsilon=1e-5,
@@ -97,7 +97,8 @@ def gradient_descent_line_search(model, alpha, max_iteration=1e4, epsilon=1e-5,
         x_current = np.random.normal(loc=0, scale=1, size=n)
 
     # intialization alpha
-    alpha = line_search_wolfe(model, x_current, pk=grad_F)
+    pk = grad_F(x_current)
+    alpha = line_search_wolfe(model, x_current, pk=pk)
 
     # keep track of interation
     x_history = []
@@ -118,7 +119,8 @@ def gradient_descent_line_search(model, alpha, max_iteration=1e4, epsilon=1e-5,
 
         # update x
         x_current = x_next
-        alpha = line_search_wolfe(model, x_current, pk=grad_F)
+        pk = grad_F(x_current)
+        alpha = line_search_wolfe(model, x_current, pk=pk)
 
     duration = time() - start_time
     print("GD finished after %s seconds"%duration)
