@@ -1,5 +1,5 @@
 import numpy as np
-import scipy
+from scipy.linalg import cholesky, solve_triangular # type: ignore
 
 class LeastSquares(object):
     """
@@ -38,6 +38,6 @@ class LeastSquares(object):
         return (2*self.B)
     
     def get_solution(self):
-        R = scipy.linalg.cholesky(self.B)
-        w = scipy.linalg.solve_triangular(R, self.A.T @ self.y, trans='T')
-        return scipy.linalg.solve_triangular(R, w)
+        R = cholesky(self.B)
+        w = solve_triangular(R, self.A.T @ self.y, trans='T')
+        return solve_triangular(R, w)
